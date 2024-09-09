@@ -1,0 +1,249 @@
+Last login: Sun Sep  8 17:18:43 on ttys001
+spartan@MLK-SCS-FVHV4BZHJ1WK ~ % ansible-playbook -i inventory.ini deploy_webserver.yml
+ERROR! the playbook: deploy_webserver.yml could not be found
+spartan@MLK-SCS-FVHV4BZHJ1WK ~ % ls
+CMPE272_Lab01			Terminal Saved Output
+CMPE_272_Lab02			ansible.cfg
+Desktop				ansible_CNFIG
+Documents			deploy_webservers.yml
+Downloads			hosts.ini
+Library				lab-compute-Amrutha-J822
+Movies				lab-compute-Amrutha-J822 copy
+Music				lab-intro-Amrutha-J822
+Pictures			learn-terraform-aws-instance
+Public				writing_playbook
+spartan@MLK-SCS-FVHV4BZHJ1WK ~ % cd CMPE_272_Lab02
+spartan@MLK-SCS-FVHV4BZHJ1WK CMPE_272_Lab02 % ls
+README.md		ansible-webserver	ports.conf
+Terminal Saved Output	ansible.cfg
+VM1.pem			default.conf
+spartan@MLK-SCS-FVHV4BZHJ1WK CMPE_272_Lab02 % cd ansible-webserver
+spartan@MLK-SCS-FVHV4BZHJ1WK ansible-webserver % ls
+Terminal Saved Output	deploy_webserver.yml
+ansible.cfg		inventory.ini
+spartan@MLK-SCS-FVHV4BZHJ1WK ansible-webserver % ansible-playbook -i inventory.ini deploy_webserver.yml
+
+PLAY [Deploy web servers] ******************************************************
+
+TASK [Gathering Facts] *********************************************************
+[WARNING]: Platform linux on host vm2 is using the discovered Python
+interpreter at /usr/bin/python3.12, but future installation of another Python
+interpreter could change the meaning of that path. See
+https://docs.ansible.com/ansible-
+core/2.17/reference_appendices/interpreter_discovery.html for more information.
+ok: [vm2]
+[WARNING]: Platform linux on host vm1 is using the discovered Python
+interpreter at /usr/bin/python3.12, but future installation of another Python
+interpreter could change the meaning of that path. See
+https://docs.ansible.com/ansible-
+core/2.17/reference_appendices/interpreter_discovery.html for more information.
+ok: [vm1]
+
+TASK [Update apt cache] ********************************************************
+changed: [vm2]
+changed: [vm1]
+
+TASK [Install Apache HTTP server] **********************************************
+ok: [vm2]
+ok: [vm1]
+
+TASK [Ensure Apache is running and enabled] ************************************
+ok: [vm2]
+ok: [vm1]
+
+TASK [Create a custom index.html file] *****************************************
+changed: [vm2]
+changed: [vm1]
+
+TASK [Open port 8080 in the firewall] ******************************************
+ok: [vm2]
+ok: [vm1]
+
+PLAY RECAP *********************************************************************
+vm1                        : ok=6    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+vm2                        : ok=6    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+spartan@MLK-SCS-FVHV4BZHJ1WK ansible-webserver % ansible-playbook -i inventory.ini deploy_webserver.yml
+
+PLAY [Deploy web servers] ******************************************************
+
+TASK [Gathering Facts] *********************************************************
+[WARNING]: Platform linux on host vm2 is using the discovered Python
+interpreter at /usr/bin/python3.12, but future installation of another Python
+interpreter could change the meaning of that path. See
+https://docs.ansible.com/ansible-
+core/2.17/reference_appendices/interpreter_discovery.html for more information.
+ok: [vm2]
+[WARNING]: Platform linux on host vm1 is using the discovered Python
+interpreter at /usr/bin/python3.12, but future installation of another Python
+interpreter could change the meaning of that path. See
+https://docs.ansible.com/ansible-
+core/2.17/reference_appendices/interpreter_discovery.html for more information.
+ok: [vm1]
+
+TASK [Update apt cache] ********************************************************
+changed: [vm2]
+changed: [vm1]
+
+TASK [Install Apache HTTP server] **********************************************
+ok: [vm2]
+ok: [vm1]
+
+TASK [Ensure Apache is running and enabled] ************************************
+ok: [vm2]
+ok: [vm1]
+
+TASK [Create a custom index.html file] *****************************************
+ok: [vm2]
+ok: [vm1]
+
+TASK [Open port 8080 in the firewall] ******************************************
+ok: [vm2]
+ok: [vm1]
+
+PLAY RECAP *********************************************************************
+vm1                        : ok=6    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+vm2                        : ok=6    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+spartan@MLK-SCS-FVHV4BZHJ1WK ansible-webserver % ansible-playbook -i inventory.ini deploy_webserver.yml
+
+PLAY [Deploy web servers] ******************************************************************************************************
+
+TASK [Gathering Facts] *********************************************************************************************************
+[WARNING]: Platform linux on host vm2 is using the discovered Python interpreter at /usr/bin/python3.12, but future
+installation of another Python interpreter could change the meaning of that path. See https://docs.ansible.com/ansible-
+core/2.17/reference_appendices/interpreter_discovery.html for more information.
+ok: [vm2]
+[WARNING]: Platform linux on host vm1 is using the discovered Python interpreter at /usr/bin/python3.12, but future
+installation of another Python interpreter could change the meaning of that path. See https://docs.ansible.com/ansible-
+core/2.17/reference_appendices/interpreter_discovery.html for more information.
+ok: [vm1]
+
+TASK [Update apt cache] ********************************************************************************************************
+changed: [vm2]
+changed: [vm1]
+
+TASK [Install Apache HTTP server] **********************************************************************************************
+ok: [vm2]
+ok: [vm1]
+
+TASK [Ensure Apache is running and enabled] ************************************************************************************
+ok: [vm2]
+ok: [vm1]
+
+TASK [Create a custom index.html file] *****************************************************************************************
+ok: [vm2]
+ok: [vm1]
+
+TASK [Open port 8080 in the firewall] ******************************************************************************************
+ok: [vm2]
+ok: [vm1]
+
+PLAY RECAP *********************************************************************************************************************
+vm1                        : ok=6    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+vm2                        : ok=6    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+spartan@MLK-SCS-FVHV4BZHJ1WK ansible-webserver % ansible-playbook -i inventory.ini deploy_webserver.yml
+
+PLAY [Deploy web servers] ******************************************************************************************************
+
+TASK [Gathering Facts] *********************************************************************************************************
+[WARNING]: Platform linux on host vm2 is using the discovered Python interpreter at /usr/bin/python3.12, but future
+installation of another Python interpreter could change the meaning of that path. See https://docs.ansible.com/ansible-
+core/2.17/reference_appendices/interpreter_discovery.html for more information.
+ok: [vm2]
+[WARNING]: Platform linux on host vm1 is using the discovered Python interpreter at /usr/bin/python3.12, but future
+installation of another Python interpreter could change the meaning of that path. See https://docs.ansible.com/ansible-
+core/2.17/reference_appendices/interpreter_discovery.html for more information.
+ok: [vm1]
+
+TASK [Update apt cache] ********************************************************************************************************
+changed: [vm2]
+changed: [vm1]
+
+TASK [Install Apache HTTP server] **********************************************************************************************
+ok: [vm2]
+ok: [vm1]
+
+TASK [Ensure Apache is running and enabled] ************************************************************************************
+ok: [vm2]
+ok: [vm1]
+
+TASK [Create a custom index.html file] *****************************************************************************************
+ok: [vm2]
+ok: [vm1]
+
+TASK [Open port 8080 in the firewall] ******************************************************************************************
+ok: [vm2]
+ok: [vm1]
+
+PLAY RECAP *********************************************************************************************************************
+vm1                        : ok=6    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+vm2                        : ok=6    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+spartan@MLK-SCS-FVHV4BZHJ1WK ansible-webserver % ansible-playbook -i inventory.ini deploy_webserver.yml
+
+PLAY [Deploy web servers] ******************************************************************************************************
+
+TASK [Gathering Facts] *********************************************************************************************************
+[WARNING]: Platform linux on host vm2 is using the discovered Python interpreter at /usr/bin/python3.12, but future
+installation of another Python interpreter could change the meaning of that path. See https://docs.ansible.com/ansible-
+core/2.17/reference_appendices/interpreter_discovery.html for more information.
+ok: [vm2]
+[WARNING]: Platform linux on host vm1 is using the discovered Python interpreter at /usr/bin/python3.12, but future
+installation of another Python interpreter could change the meaning of that path. See https://docs.ansible.com/ansible-
+core/2.17/reference_appendices/interpreter_discovery.html for more information.
+ok: [vm1]
+
+TASK [Update apt cache] ********************************************************************************************************
+changed: [vm1]
+changed: [vm2]
+
+TASK [Install Apache HTTP server] **********************************************************************************************
+ok: [vm2]
+ok: [vm1]
+
+TASK [Ensure Apache is running and enabled] ************************************************************************************
+ok: [vm2]
+ok: [vm1]
+
+TASK [Create a custom index.html file] *****************************************************************************************
+ok: [vm1]
+ok: [vm2]
+
+TASK [Open port 8080 in the firewall] ******************************************************************************************
+ok: [vm2]
+ok: [vm1]
+
+PLAY RECAP *********************************************************************************************************************
+vm1                        : ok=6    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+vm2                        : ok=6    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+spartan@MLK-SCS-FVHV4BZHJ1WK ansible-webserver % touch undeploy_webserver.yml
+nano undeploy_webserver.yml
+
+
+  UW PICO 5.09                                      File: undeploy_webserver.yml                                      Modified  
+
+        state: absent                                          
+
+    - name: Remove custom index.html file
+      file:   
+        path: /var/www/html/index.html
+        state: absent
+  
+    - name: Remove port 8080 from the firewall
+      ufw:
+        rule: deny
+        name: 'Apache'
+        port: '8080'
+        proto: tcp
+      
+        
+        
+
+    
+      
+
+^G Get Help          ^O WriteOut          ^R Read File         ^Y Prev Pg           ^K Cut Text          ^C Cur Pos           
+^X Exit              ^J Justify           ^W Where is          ^V Next Pg           ^U UnCut Text        ^T To Spell          

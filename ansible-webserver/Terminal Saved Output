@@ -1,0 +1,48 @@
+Last login: Sun Sep  8 17:13:58 on ttys000
+spartan@MLK-SCS-FVHV4BZHJ1WK ~ % ls
+CMPE272_Lab01			Terminal Saved Output
+CMPE_272_Lab02			ansible.cfg
+Desktop				ansible_CNFIG
+Documents			deploy_webservers.yml
+Downloads			hosts.ini
+Library				lab-compute-Amrutha-J822
+Movies				lab-compute-Amrutha-J822 copy
+Music				lab-intro-Amrutha-J822
+Pictures			learn-terraform-aws-instance
+Public				writing_playbook
+spartan@MLK-SCS-FVHV4BZHJ1WK ~ % cd CMPE_272_Lab02
+spartan@MLK-SCS-FVHV4BZHJ1WK CMPE_272_Lab02 % mkdir ansible-webserver
+spartan@MLK-SCS-FVHV4BZHJ1WK CMPE_272_Lab02 % cd ansible-webserver 
+spartan@MLK-SCS-FVHV4BZHJ1WK ansible-webserver % touch inventory.ini
+spartan@MLK-SCS-FVHV4BZHJ1WK ansible-webserver % nano inventory.ini
+
+
+
+
+
+
+
+  UW PICO 5.09                  File: inventory.ini                   Modified  
+
+[webservers]
+vm1 ansible_host=54.183.228.161 ansible_user=ubuntu  
+vm2 ansible_host=18.144.3.58 ansible_user=ubuntu      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+^G Get Help  ^O WriteOut  ^R Read File ^Y Prev Pg   ^K Cut Text  ^C Cur Pos   
+^X Exit      ^J Justify   ^W Where is  ^V Next Pg   ^U UnCut Text^T To Spell  

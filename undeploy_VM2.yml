@@ -1,0 +1,266 @@
+Last login: Sun Sep  8 16:26:34 on ttys002
+spartan@MLK-SCS-FVHV4BZHJ1WK ~ % ansible --version
+ansible [core 2.17.3]
+  config file = /Users/spartan/ansible.cfg
+  configured module search path = ['/Users/spartan/.ansible/plugins/modules', '/usr/share/ansible/plugins/modules']
+  ansible python module location = /usr/local/Cellar/ansible/10.3.0/libexec/lib/python3.12/site-packages/ansible
+  ansible collection location = /Users/spartan/.ansible/collections:/usr/share/ansible/collections
+  executable location = /usr/local/bin/ansible
+  python version = 3.12.5 (main, Aug  9 2024, 15:04:47) [Clang 14.0.0 (clang-1400.0.29.202)] (/usr/local/Cellar/ansible/10.3.0/libexec/bin/python)
+  jinja version = 3.1.4
+  libyaml = True
+spartan@MLK-SCS-FVHV4BZHJ1WK ~ % ansible -i hosts.ini webservers -m ping
+
+ansible_ssh_private_key_file=/Users/spartan/lab-compute-Amrutha-J822 | UNREACHABLE! => {
+    "changed": false,
+    "msg": "Failed to connect to the host via ssh: ssh: Could not resolve hostname ansible_ssh_private_key_file=/users/spartan/lab-compute-amrutha-j822: nodename nor servname provided, or not known",
+    "unreachable": true
+}
+VM1 | UNREACHABLE! => {
+    "changed": false,
+    "msg": "Failed to connect to the host via ssh: @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@\r\n@         WARNING: UNPROTECTED PRIVATE KEY FILE!          @\r\n@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@\r\nPermissions 0707 for '/Users/spartan/lab-compute-Amrutha-J822' are too open.\r\nIt is required that your private key files are NOT accessible by others.\r\nThis private key will be ignored.\r\nLoad key \"/Users/spartan/lab-compute-Amrutha-J822\": bad permissions\r\nec2-user@54.193.130.105: Permission denied (publickey,gssapi-keyex,gssapi-with-mic).",
+    "unreachable": true
+}
+VM2 | UNREACHABLE! => {
+    "changed": false,
+    "msg": "Failed to connect to the host via ssh: @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@\r\n@         WARNING: UNPROTECTED PRIVATE KEY FILE!          @\r\n@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@\r\nPermissions 0707 for '/Users/spartan/lab-compute-Amrutha-J822' are too open.\r\nIt is required that your private key files are NOT accessible by others.\r\nThis private key will be ignored.\r\nLoad key \"/Users/spartan/lab-compute-Amrutha-J822\": bad permissions\r\nec2-user@54.193.71.144: Permission denied (publickey,gssapi-keyex,gssapi-with-mic).",
+    "unreachable": true
+}
+spartan@MLK-SCS-FVHV4BZHJ1WK ~ % nano deploy_webservers.yml             
+spartan@MLK-SCS-FVHV4BZHJ1WK ~ % ansible-playbook -i hosts.ini deploy_webservers.yml
+
+ERROR! We were unable to read either as JSON nor YAML, these are the errors we got from each:
+JSON: Expecting value: line 1 column 1 (char 0)
+
+Syntax Error while loading YAML.
+  could not find expected ':'
+
+The error appears to be in '/Users/spartan/deploy_webservers.yml': line 24, column 15, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+/etc/nginx/nginx.conf
+        regexp: '^Listen 80'
+              ^ here
+spartan@MLK-SCS-FVHV4BZHJ1WK ~ % chmod 400 "key.pem"
+chmod: key.pem: No such file or directory
+spartan@MLK-SCS-FVHV4BZHJ1WK ~ % chmod 400 key.pem  
+chmod: key.pem: No such file or directory
+spartan@MLK-SCS-FVHV4BZHJ1WK ~ % ls 
+Desktop				ansible.cfg
+Documents			ansible_CNFIG
+Downloads			deploy_webservers.yml
+Library				hosts.ini
+Movies				lab-compute-Amrutha-J822
+Music				lab-compute-Amrutha-J822 copy
+Pictures			lab-intro-Amrutha-J822
+Public				learn-terraform-aws-instance
+Terminal Saved Output		writing_playbook
+spartan@MLK-SCS-FVHV4BZHJ1WK ~ % cd lab-compute-Amrutha-J822
+spartan@MLK-SCS-FVHV4BZHJ1WK lab-compute-Amrutha-J822 % chmod 400 key.pem
+spartan@MLK-SCS-FVHV4BZHJ1WK lab-compute-Amrutha-J822 % ssh -i "key.pem" ec2-user@ec2-54-193-71-144.us-west-1.compute.amazonaws.com
+   ,     #_
+   ~\_  ####_        Amazon Linux 2023
+  ~~  \_#####\
+  ~~     \###|
+  ~~       \#/ ___   https://aws.amazon.com/linux/amazon-linux-2023
+   ~~       V~' '->
+    ~~~         /
+      ~~._.   _/
+         _/ _/
+       _/m/'
+Last login: Sun Sep  8 23:06:33 2024 from 13.52.6.116
+[ec2-user@ip-172-31-9-150 ~]$ q
+-bash: q: command not found
+[ec2-user@ip-172-31-9-150 ~]$ exit
+logout
+Connection to ec2-54-193-71-144.us-west-1.compute.amazonaws.com closed.
+spartan@MLK-SCS-FVHV4BZHJ1WK lab-compute-Amrutha-J822 % pip --version
+zsh: command not found: pip
+spartan@MLK-SCS-FVHV4BZHJ1WK lab-compute-Amrutha-J822 % yum install python-pip
+zsh: command not found: yum
+spartan@MLK-SCS-FVHV4BZHJ1WK lab-compute-Amrutha-J822 % python3 -m ensurepip
+error: externally-managed-environment
+
+× This environment is externally managed
+╰─> To install Python packages system-wide, try brew install
+    xyz, where xyz is the package you are trying to
+    install.
+    
+    If you wish to install a Python library that isn't in Homebrew,
+    use a virtual environment:
+    
+    python3 -m venv path/to/venv
+    source path/to/venv/bin/activate
+    python3 -m pip install xyz
+    
+    If you wish to install a Python application that isn't in Homebrew,
+    it may be easiest to use 'pipx install xyz', which will manage a
+    virtual environment for you. You can install pipx with
+    
+    brew install pipx
+    
+    You may restore the old behavior of pip by passing
+    the '--break-system-packages' flag to pip, or by adding
+    'break-system-packages = true' to your pip.conf file. The latter
+    will permanently disable this error.
+    
+    If you disable this error, we STRONGLY recommend that you additionally
+    pass the '--user' flag to pip, or set 'user = true' in your pip.conf
+    file. Failure to do this can result in a broken Homebrew installation.
+    
+    Read more about this behavior here: <https://peps.python.org/pep-0668/>
+
+note: If you believe this is a mistake, please contact your Python installation or OS distribution provider. You can override this, at the risk of breaking your Python installation or OS, by passing --break-system-packages.
+hint: See PEP 668 for the detailed specification.
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/usr/local/Cellar/python@3.12/3.12.5/Frameworks/Python.framework/Versions/3.12/lib/python3.12/ensurepip/__main__.py", line 5, in <module>
+    sys.exit(ensurepip._main())
+             ^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/python@3.12/3.12.5/Frameworks/Python.framework/Versions/3.12/lib/python3.12/ensurepip/__init__.py", line 284, in _main
+    return _bootstrap(
+           ^^^^^^^^^^^
+  File "/usr/local/Cellar/python@3.12/3.12.5/Frameworks/Python.framework/Versions/3.12/lib/python3.12/ensurepip/__init__.py", line 200, in _bootstrap
+    return _run_pip([*args, *_PACKAGE_NAMES], additional_paths)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/python@3.12/3.12.5/Frameworks/Python.framework/Versions/3.12/lib/python3.12/ensurepip/__init__.py", line 101, in _run_pip
+    return subprocess.run(cmd, check=True).returncode
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/python@3.12/3.12.5/Frameworks/Python.framework/Versions/3.12/lib/python3.12/subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['/usr/local/opt/python@3.12/bin/python3.12', '-W', 'ignore::DeprecationWarning', '-c', '\nimport runpy\nimport sys\nsys.path = [\'/var/folders/pb/3gvq6y353sx6xtz405hgjxfc0000gq/T/tmpqnbiz922/pip-24.2-py3-none-any.whl\'] + sys.path\nsys.argv[1:] = [\'install\', \'--no-cache-dir\', \'--no-index\', \'--find-links\', \'/var/folders/pb/3gvq6y353sx6xtz405hgjxfc0000gq/T/tmpqnbiz922\', \'pip\']\nrunpy.run_module("pip", run_name="__main__", alter_sys=True)\n']' returned non-zero exit status 1.
+spartan@MLK-SCS-FVHV4BZHJ1WK lab-compute-Amrutha-J822 % cd..
+zsh: command not found: cd..
+spartan@MLK-SCS-FVHV4BZHJ1WK lab-compute-Amrutha-J822 % cd ..
+spartan@MLK-SCS-FVHV4BZHJ1WK ~ % got clone git@github.com:Amrutha-J822/CMPE272_Lab01.git
+zsh: command not found: got
+spartan@MLK-SCS-FVHV4BZHJ1WK ~ % git clone git@github.com:Amrutha-J822/CMPE272_Lab01.git
+Cloning into 'CMPE272_Lab01'...
+remote: Enumerating objects: 7, done.
+remote: Counting objects: 100% (7/7), done.
+remote: Compressing objects: 100% (5/5), done.
+Receiving objects: 100% (7/7), done.
+remote: Total 7 (delta 0), reused 0 (delta 0), pack-reused 0 (from 0)
+spartan@MLK-SCS-FVHV4BZHJ1WK ~ % ld
+ld: warning: platform not specified
+ld: warning: -arch not specified
+ld: warning: No platform min-version specified on command line
+ld: no object files specified
+spartan@MLK-SCS-FVHV4BZHJ1WK ~ % ls
+CMPE272_Lab01			ansible.cfg
+Desktop				ansible_CNFIG
+Documents			deploy_webservers.yml
+Downloads			hosts.ini
+Library				lab-compute-Amrutha-J822
+Movies				lab-compute-Amrutha-J822 copy
+Music				lab-intro-Amrutha-J822
+Pictures			learn-terraform-aws-instance
+Public				writing_playbook
+Terminal Saved Output
+spartan@MLK-SCS-FVHV4BZHJ1WK ~ % git clone git@github.com:Amrutha-J822/CMPE272_Lab01.git
+fatal: destination path 'CMPE272_Lab01' already exists and is not an empty directory.
+spartan@MLK-SCS-FVHV4BZHJ1WK ~ % cd CMPE272_Lab01
+spartan@MLK-SCS-FVHV4BZHJ1WK CMPE272_Lab01 % cd ..
+spartan@MLK-SCS-FVHV4BZHJ1WK ~ % git clone git@github.com:Amrutha-J822/CMPE_272_Lab02.git
+Cloning into 'CMPE_272_Lab02'...
+remote: Enumerating objects: 3, done.
+remote: Counting objects: 100% (3/3), done.
+remote: Total 3 (delta 0), reused 0 (delta 0), pack-reused 0 (from 0)
+Receiving objects: 100% (3/3), done.
+spartan@MLK-SCS-FVHV4BZHJ1WK ~ % ls
+CMPE272_Lab01			Terminal Saved Output
+CMPE_272_Lab02			ansible.cfg
+Desktop				ansible_CNFIG
+Documents			deploy_webservers.yml
+Downloads			hosts.ini
+Library				lab-compute-Amrutha-J822
+Movies				lab-compute-Amrutha-J822 copy
+Music				lab-intro-Amrutha-J822
+Pictures			learn-terraform-aws-instance
+Public				writing_playbook
+spartan@MLK-SCS-FVHV4BZHJ1WK ~ % cd CMPE_272_Lab02
+spartan@MLK-SCS-FVHV4BZHJ1WK CMPE_272_Lab02 % ls
+README.md	VM1.pem
+spartan@MLK-SCS-FVHV4BZHJ1WK CMPE_272_Lab02 % chmod 400 VM1.pem
+spartan@MLK-SCS-FVHV4BZHJ1WK CMPE_272_Lab02 % ssh -i "VM1.pem" ubuntu@ec2-54-183-228-161.us-west-1.compute.amazonaws.com
+The authenticity of host 'ec2-54-183-228-161.us-west-1.compute.amazonaws.com (54.183.228.161)' can't be established.
+ED25519 key fingerprint is SHA256:VOPvT0WT3epG+e+YZ2PRv1h45MDNBEJasq28ZgoSAPw.
+This key is not known by any other names
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added 'ec2-54-183-228-161.us-west-1.compute.amazonaws.com' (ED25519) to the list of known hosts.
+Welcome to Ubuntu 24.04 LTS (GNU/Linux 6.8.0-1012-aws x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/pro
+
+ System information as of Mon Sep  9 00:13:51 UTC 2024
+
+  System load:  0.04              Processes:             107
+  Usage of /:   22.8% of 6.71GB   Users logged in:       0
+  Memory usage: 20%               IPv4 address for enX0: 172.31.0.217
+  Swap usage:   0%
+
+Expanded Security Maintenance for Applications is not enabled.
+
+0 updates can be applied immediately.
+
+Enable ESM Apps to receive additional future security updates.
+See https://ubuntu.com/esm or run: sudo pro status
+
+
+The list of available updates is more than a week old.
+To check for new updates run: sudo apt update
+
+
+The programs included with the Ubuntu system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.
+
+Ubuntu comes with ABSOLUTELY NO WARRANTY, to the extent permitted by
+applicable law.
+
+To run a command as administrator (user "root"), use "sudo <command>".
+See "man sudo_root" for details.
+
+ubuntu@ip-172-31-0-217:~$ 
+Broadcast message from root@ip-172-31-0-217 on pts/2 (Mon 2024-09-09 01:39:54 UTC):
+
+The system will reboot now!
+
+Connection to ec2-54-183-228-161.us-west-1.compute.amazonaws.com closed by remote host.
+Connection to ec2-54-183-228-161.us-west-1.compute.amazonaws.com closed.
+spartan@MLK-SCS-FVHV4BZHJ1WK CMPE_272_Lab02 % ls
+README.md		VM2.pem			default.conf
+Terminal Saved Output	ansible-webserver	ports.conf
+VM1.pem			ansible.cfg		undeploy_webserver.yml
+spartan@MLK-SCS-FVHV4BZHJ1WK CMPE_272_Lab02 % cd ansible-webserver
+spartan@MLK-SCS-FVHV4BZHJ1WK ansible-webserver % nano undeploy_webserver.yml
+
+  UW PICO 5.09              File: undeploy_webserver.yml              Modified  
+
+---
+- name: Un-deploy web servers
+  hosts: webservers
+  become: yes
+  vars:
+    ansible_ssh_private_key_file: /Users/spartan/CMPE_272_Lab02/VM2.pem
+  tasks:
+    - name: Stop Apache service
+      systemd:
+        name: apache2
+        state: stopped
+        
+    - name: Disable Apache service
+      systemd:
+        name: apache2
+        enabled: no  
+        
+    - name: Remove Apache HTTP server
+      apt:
+
+^G Get Help  ^O WriteOut  ^R Read File ^Y Prev Pg   ^K Cut Text  ^C Cur Pos   
+^X Exit      ^J Justify   ^W Where is  ^V Next Pg   ^U UnCut Text^T To Spell  
